@@ -102,6 +102,18 @@
       color: var(--ink);
     }
 
+    .view-ref {
+      margin-top: 12px;
+      font-size: 0.92rem;
+      color: #5b5247;
+    }
+
+    .view-ref a {
+      color: var(--view-blue);
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 2px;
+    }
+
     .scenario-board {
       grid-column: span 12;
       background: linear-gradient(170deg, #fff8ed, #f2e5d4);
@@ -122,6 +134,57 @@
     .scenario-board p {
       margin-bottom: 16px;
     }
+
+    .evidence-grid {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .evidence-card {
+      grid-column: span 6;
+      background: #fff8ee;
+      border: 1px solid #deccb6;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
+      padding: 18px;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 560ms ease forwards;
+    }
+
+    .evidence-card h2 {
+      margin-bottom: 10px;
+    }
+
+    .evidence-card p {
+      margin: 0 0 12px;
+    }
+
+    .evidence-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .evidence-card li + li {
+      margin-top: 6px;
+    }
+
+    .evidence-card strong {
+      color: var(--ink);
+    }
+
+    .evidence-card a {
+      color: var(--view-blue);
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 2px;
+    }
+
+    .evidence-card:nth-child(1) { animation-delay: 780ms; }
+    .evidence-card:nth-child(2) { animation-delay: 860ms; }
 
     .scenario-track {
       display: grid;
@@ -196,6 +259,10 @@
         grid-column: span 12;
       }
 
+      .evidence-card {
+        grid-column: span 12;
+      }
+
       .step {
         grid-column: span 5;
       }
@@ -259,6 +326,7 @@
           <li><strong>MessageManager</strong> provides shared notification support.</li>
           <li><strong>Timer</strong> supports time-based behavior in messaging and Space Shooter.</li>
         </ul>
+        <p class="view-ref">Reference Diagram: <a href="../class-diagram/index.html">Class Diagram</a> (Functional Modeling)</p>
       </article>
 
       <article class="view-card" id="development">
@@ -278,6 +346,7 @@
           <li><strong>headers/custom_timer.h</strong> contains the reusable timer utility.</li>
           <li><strong>headers/settings.h</strong> and <strong>headers/spaceShooterSettings.h</strong> define constants.</li>
         </ul>
+        <p class="view-ref">Reference Diagram: <a href="../class-diagram/index.html">Class Diagram</a> (Implementation Details)</p>
       </article>
 
       <article class="view-card" id="process">
@@ -289,6 +358,7 @@
           <li>Scene modules may run internal update logic, timers, and collision checks.</li>
           <li>Raylib handles real-time keyboard, mouse, drawing, and audio operations.</li>
         </ul>
+        <p class="view-ref">Reference Diagrams: <a href="../activity-diagram/index.html">Activity Diagrams</a> and <a href="../sequence-diagram/index.html">Sequence Diagrams</a></p>
       </article>
 
       <article class="view-card" id="physical">
@@ -300,11 +370,12 @@
           <li>Assets are loaded from the local filesystem relative to the project folder.</li>
           <li>Save data is read from and written to <strong>characterData.txt</strong> in the project root.</li>
         </ul>
+        <p class="view-ref">Reference Diagram: <a href="../deployment-diagram/index.html">Deployment Diagram</a></p>
       </article>
 
       <article class="scenario-board" id="scenarios">
         <h2>Scenario View</h2>
-        <p>Representative end-to-end user journeys that validate the architecture in action.</p>
+        <p>Representative end-to-end user journeys that validate the architecture in action. Reference Diagram: <a href="../usecase-diagram/index.html">Use Case Diagrams</a></p>
         <div class="scenario-track" aria-label="scenario timeline">
           <div class="step">
             <span>Step 1</span>
