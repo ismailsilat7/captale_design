@@ -322,9 +322,14 @@
           <li><strong>CapTaleSystem</strong> is the top-level controller.</li>
           <li><strong>Cap</strong> is the shared player state.</li>
           <li><strong>Lobby</strong> is the hub that routes to scene modules.</li>
-          <li>Each city module handles one gameplay domain.</li>
+          <li>Each city module handles one gameplay domain through its own update and render responsibilities.</li>
+          <li>Scene selection follows a clear boundary: Lobby decides destination, while each city owns internal gameplay rules.</li>
+          <li><strong>Cap</strong> acts as a cross-scene domain object for energy, currency, and progression continuity.</li>
           <li><strong>MessageManager</strong> provides shared notification support.</li>
+          <li><strong>MessageManager</strong> is reused across modules to keep feedback behavior consistent and decoupled from city logic.</li>
           <li><strong>Timer</strong> supports time-based behavior in messaging and Space Shooter.</li>
+          <li>State transitions are centralized in <strong>CapTaleSystem</strong>, reducing coupling between city modules.</li>
+          <li>The logical model separates concerns into orchestration, shared state, scene routing, gameplay modules, and utilities.</li>
         </ul>
         <p class="view-ref">Reference Diagram: <a href="../class-diagram/index.html">Class Diagram</a> (Functional Modeling)</p>
       </article>
@@ -353,9 +358,13 @@
         <h2>Process View</h2>
         <ul>
           <li>The system runs a single frame-based game loop.</li>
-          <li>Each frame performs input handling, state updates, and rendering.</li>
+          <li>Each frame follows a deterministic pipeline: input handling, state update, collision/timer evaluation, then rendering.</li>
           <li><strong>CapTaleSystem</strong> dispatches behavior based on the current scene state.</li>
-          <li>Scene modules may run internal update logic, timers, and collision checks.</li>
+          <li>Scene modules execute internal logic independently while following the shared frame contract.</li>
+          <li>Timers are evaluated during updates to trigger delayed effects, cooldowns, and time-based events.</li>
+          <li>Collision checks run inside scene updates and immediately feed score, energy, and game-over conditions.</li>
+          <li>State transition checks occur after updates, allowing controlled scene switching without mid-frame inconsistencies.</li>
+          <li>Audio and visual feedback are synchronized with state outcomes in the same frame cycle.</li>
           <li>Raylib handles real-time keyboard, mouse, drawing, and audio operations.</li>
         </ul>
         <p class="view-ref">Reference Diagrams: <a href="../activity-diagram/index.html">Activity Diagrams</a> and <a href="../sequence-diagram/index.html">Sequence Diagrams</a></p>
