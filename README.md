@@ -2,6 +2,10 @@
 
 Software Design & Analysis project for CapTale (FAST NU, Semester 4).
 
+## Live Website
+
+- [CapTale Design Webpage](https://ismailsilat7.github.io/captale_design)
+
 ## About CapTale
 
 CapTale is a city-based educational game where the player navigates a lobby and enters multiple modules (resource cities and paid minigame cities) to manage energy, cash, and tokens. The system is centered around a state-driven architecture managed by `CapTaleSystem`, with each city/module handling its own update loop and gameplay logic.
