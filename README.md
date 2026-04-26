@@ -16,11 +16,12 @@ CapTale is a city-based educational game where the player navigates a lobby and 
 
 ## Available UML Diagram
 
-- [Class Diagram](class-diagram/README.md)
-- [Use Case Diagram](usecase-diagram/README.md)
-- [Sequence Diagram](sequence-diagram/README.md)
-- [Activity Diagram](activity-diagram/README.md)
+- [Class Diagram](class-diagram/index.html)
+- [Use Case Diagram](usecase-diagram/index.html)
+- [Sequence Diagram](sequence-diagram/index.html)
+- [Activity Diagram](activity-diagram/index.html)
 - [Deployment Diagram](deployment-diagram/README.md)
+- [4+1 View](4plus1-view/index.html)
 
 Each folder contains:
 

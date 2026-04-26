@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CapTale 4+1 View</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    :root {
+      --view-teal: #0d7f68;
+      --view-blue: #1b4f82;
+      --chip-bg: #f2e6d6;
+      --hero-cut: #f0ddc6;
+    }
+
+    .hero-view {
+      margin-top: 16px;
+      background:
+        radial-gradient(circle at 12% 0%, #fff9ef 0, transparent 34%),
+        linear-gradient(130deg, #fff9f1, #f4e7d5 55%, var(--hero-cut));
+    }
+
+    .hero-view h1 {
+      margin-bottom: 8px;
+    }
+
+    .hero-view p {
+      max-width: 72ch;
+      margin-bottom: 0;
+    }
+
+    .quick-links {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .jump-chip {
+      text-decoration: none;
+      color: var(--view-blue);
+      background: var(--chip-bg);
+      border: 1px solid #dbc4a9;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-family: "Montserrat", "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 180ms ease, transform 180ms ease;
+    }
+
+    .jump-chip:hover {
+      background: #ead7bf;
+      transform: translateY(-1px);
+    }
+
+    .view-grid {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .view-card {
+      grid-column: span 6;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      padding: 18px;
+      scroll-margin-top: 24px;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 560ms ease forwards;
+    }
+
+    .view-card:nth-child(1) { animation-delay: 70ms; }
+    .view-card:nth-child(2) { animation-delay: 140ms; }
+    .view-card:nth-child(3) { animation-delay: 210ms; }
+    .view-card:nth-child(4) { animation-delay: 280ms; }
+
+    .view-card h2 {
+      margin-bottom: 10px;
+    }
+
+    .view-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .view-card li + li {
+      margin-top: 6px;
+    }
+
+    .view-card strong {
+      color: var(--ink);
+    }
+
+    .scenario-board {
+      grid-column: span 12;
+      background: linear-gradient(170deg, #fff8ed, #f2e5d4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      scroll-margin-top: 24px;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 560ms ease 340ms forwards;
+    }
+
+    .scenario-board h2 {
+      margin-bottom: 6px;
+    }
+
+    .scenario-board p {
+      margin-bottom: 16px;
+    }
+
+    .scenario-track {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 10px;
+    }
+
+    .step {
+      grid-column: span 2;
+      background: #fffdf8;
+      border: 1px solid #d6c2aa;
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 0.95rem;
+      color: #564c40;
+      position: relative;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeUp 440ms ease forwards;
+    }
+
+    .step:nth-child(1) { animation-delay: 420ms; }
+    .step:nth-child(2) { animation-delay: 490ms; }
+    .step:nth-child(3) { animation-delay: 560ms; }
+    .step:nth-child(4) { animation-delay: 630ms; }
+    .step:nth-child(5) { animation-delay: 700ms; }
+
+    .step::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -11px;
+      width: 10px;
+      height: 2px;
+      background: #b59d82;
+      transform: translateY(-50%);
+    }
+
+    .step:last-child::before {
+      display: none;
+    }
+
+    .step span {
+      display: block;
+      margin-bottom: 6px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(13, 127, 104, 0.1);
+      color: var(--view-teal);
+      font-family: "Montserrat", "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      width: fit-content;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .view-card {
+        grid-column: span 12;
+      }
+
+      .step {
+        grid-column: span 5;
+      }
+
+      .step:nth-child(even)::before {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .quick-links {
+        gap: 8px;
+      }
+
+      .jump-chip {
+        font-size: 0.84rem;
+        padding: 7px 12px;
+      }
+
+      .scenario-track {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        grid-column: span 1;
+      }
+
+      .step::before {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-wrap">
+    <p class="back-link"><a class="btn btn-secondary" href="../index.html">Back To Hub</a></p>
+
+    <section class="hero hero-view">
+      <h1>CapTale 4+1 Architecture View</h1>
+      <p>
+        This page organizes the software architecture using the 4+1 model, so structure, implementation,
+        runtime behavior, deployment setup, and key user journeys can be reviewed in one place.
+      </p>
+      <div class="quick-links" aria-label="jump to architectural views">
+        <a class="jump-chip" href="#logical">Logical</a>
+        <a class="jump-chip" href="#development">Development</a>
+        <a class="jump-chip" href="#process">Process</a>
+        <a class="jump-chip" href="#physical">Physical</a>
+        <a class="jump-chip" href="#scenarios">Scenarios</a>
+      </div>
+    </section>
+
+    <section class="view-grid" aria-label="4 plus 1 views">
+      <article class="view-card" id="logical">
+        <h2>Logical View</h2>
+        <ul>
+          <li><strong>CapTaleSystem</strong> is the top-level controller.</li>
+          <li><strong>Cap</strong> is the shared player state.</li>
+          <li><strong>Lobby</strong> is the hub that routes to scene modules.</li>
+          <li>Each city module handles one gameplay domain.</li>
+          <li><strong>MessageManager</strong> provides shared notification support.</li>
+          <li><strong>Timer</strong> supports time-based behavior in messaging and Space Shooter.</li>
+        </ul>
+      </article>
+
+      <article class="view-card" id="development">
+        <h2>Development View</h2>
+        <ul>
+          <li><strong>main.cpp</strong> contains the application shell and state machine.</li>
+          <li><strong>headers/cap.h</strong> contains the shared player object.</li>
+          <li><strong>headers/lobby.h</strong> contains lobby logic and room detection.</li>
+          <li><strong>headers/message.h</strong> contains the message subsystem.</li>
+          <li><strong>headers/customCity.h</strong> contains cap selection.</li>
+          <li><strong>headers/pongCity.h</strong> contains Pong gameplay.</li>
+          <li><strong>headers/carCity.h</strong> contains Car City gameplay.</li>
+          <li><strong>headers/atmCity.h</strong> contains ATM logic.</li>
+          <li><strong>headers/earningCity.h</strong> contains Earn City quiz logic.</li>
+          <li><strong>headers/energyCity.h</strong> contains Energy City logic.</li>
+          <li><strong>headers/spaceShooter.h</strong> and <strong>headers/sprites.h</strong> contain Space Shooter and its entity hierarchy.</li>
+          <li><strong>headers/custom_timer.h</strong> contains the reusable timer utility.</li>
+          <li><strong>headers/settings.h</strong> and <strong>headers/spaceShooterSettings.h</strong> define constants.</li>
+        </ul>
+      </article>
+
+      <article class="view-card" id="process">
+        <h2>Process View</h2>
+        <ul>
+          <li>The system runs a single frame-based game loop.</li>
+          <li>Each frame performs input handling, state updates, and rendering.</li>
+          <li><strong>CapTaleSystem</strong> dispatches behavior based on the current scene state.</li>
+          <li>Scene modules may run internal update logic, timers, and collision checks.</li>
+          <li>Raylib handles real-time keyboard, mouse, drawing, and audio operations.</li>
+        </ul>
+      </article>
+
+      <article class="view-card" id="physical">
+        <h2>Physical View</h2>
+        <ul>
+          <li>Execution environment is a Windows desktop machine.</li>
+          <li>The game runs as a native C++ executable.</li>
+          <li>Raylib provides graphics, audio, and windowing support.</li>
+          <li>Assets are loaded from the local filesystem relative to the project folder.</li>
+          <li>Save data is read from and written to <strong>characterData.txt</strong> in the project root.</li>
+        </ul>
+      </article>
+
+      <article class="scenario-board" id="scenarios">
+        <h2>Scenario View</h2>
+        <p>Representative end-to-end user journeys that validate the architecture in action.</p>
+        <div class="scenario-track" aria-label="scenario timeline">
+          <div class="step">
+            <span>Step 1</span>
+            Entering a city from the lobby.
+          </div>
+          <div class="step">
+            <span>Step 2</span>
+            Playing Pong, Car City, Space Shooter, Earn City, ATM City, or Energy City.
+          </div>
+          <div class="step">
+            <span>Step 3</span>
+            Managing tokens through room entry and ATM conversion.
+          </div>
+          <div class="step">
+            <span>Step 4</span>
+            Managing energy through movement drain and Energy City item collection.
+          </div>
+          <div class="step">
+            <span>Step 5</span>
+            Saving progress on exit and restoring progress on next run.
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
