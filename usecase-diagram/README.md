@@ -1,5 +1,11 @@
 # Use Case Diagram - CapTale
 
+## Table of Contents
+
+- [Lobby Module](#lobby-module)
+- [Resource City Module](#resource-city-module)
+- [Game City Module](#game-city-module)
+
 The use case diagrams of CapTale describe player-facing interactions across the lobby, resource cities, and paid game cities. They capture entry conditions, normal interaction paths, alternate actions, blocked-entry scenarios, and end states after each interaction.
 
 This project uses Lucidchart for use case diagram design. You can view the diagram using the link below directly on Lucidchart:
@@ -15,6 +21,8 @@ You can also view the separated use case diagram images:
 ## Use Case Descriptions
 
 ### Lobby Module
+
+![Lobby Module](lobby.png)
 
 **Name:** Lobby Navigation and City Entry  
 **Brief Description:** Player moves in the lobby, selects a destination, and enters an allowed city.  
@@ -42,6 +50,8 @@ You can also view the separated use case diagram images:
 **Post Conditions:** Player is either in the selected module or still in lobby with feedback shown.
 
 ### Resource City Module
+
+![Resource City Module](resource-city.png)
 
 **Name:** Enter and Use Resource City  
 **Brief Description:** Player enters ATM/Earn/Energy city to restore energy, earn cash, or convert cash to tokens.  
@@ -71,6 +81,8 @@ You can also view the separated use case diagram images:
 **Post Conditions:** Player resources (energy/cash/tokens) are updated and bounded; state returns to lobby on exit.
 
 ### Game City Module
+
+![Game City Module](game-city.png)
 
 **Name:** Enter and Play Paid Game City  
 **Brief Description:** Player enters Pong/Car/Space Shooter, plays the city loop, and can pause/restart/return.  

@@ -1,5 +1,7 @@
 # Class Diagram - CapTale
 
+![Class Diagram - CapTale](class-diagram.png)
+
 The class diagram of CapTale is centered around the `CapTaleSystem` class, which acts as the main controller managing game states, modules, and overall flow. It composes major components such as the player (Cap), messaging system, and multiple city-based mini-games, each encapsulating its own behavior. The system follows a state-driven design using an enum to handle transitions between different game modes, while shared resources like the player are accessed across modules. This structure ensures modularity, clear separation of concerns, and efficient management of the game lifecycle.
 
 This project uses Lucidchart for class diagram design. You can view the diagram using the link below directly on lucid chart:
