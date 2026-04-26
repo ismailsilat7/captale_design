@@ -27,4 +27,4 @@ Each folder contains:
 
 - A dedicated README with explanation and diagram previews
 - Lucidchart reference link
-- Downloadable PDF/PNG exports (and sub-diagram images where applicable)
+- Downloadable PDF/PNG exports
